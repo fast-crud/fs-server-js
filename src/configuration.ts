@@ -3,6 +3,7 @@ import { Application } from '@midwayjs/koa';
 import * as bodyParser from 'koa-bodyparser';
 import * as orm from '@midwayjs/orm';
 import * as cache from '@midwayjs/cache';
+import * as cors from '@koa/cors';
 import { join } from 'path';
 import * as flyway from './components/flyway/src/index';
 @Configuration({
@@ -27,8 +28,13 @@ export class ContainerLifeCycle {
   app: Application;
 
   async onReady() {
+    //跨域
+    this.app.use(cors({
+      origin: '*',
+    }));
     // bodyparser options see https://github.com/koajs/bodyparser
     this.app.use(bodyParser());
+    //请求日志打印
     this.app.use(await this.app.generateMiddleware('reportMiddleware'));
 
     //统一异常处理
@@ -43,9 +49,10 @@ export class ContainerLifeCycle {
         ctx.app.emit('error', error); // 触发应用层级错误事件
       }
     });
-    this.app.use(
-      await this.app.generateMiddleware('globalExceptionMiddleware')
-    );
+    // this.app.use(
+    //   await this.app.generateMiddleware('globalExceptionMiddleware')
+    // );
+    //授权处理
     this.app.use(await this.app.generateMiddleware('authorityMiddleware'));
   }
 }
