@@ -1,4 +1,4 @@
-FROM node:14
+FROM registry.cn-shenzhen.aliyuncs.com/greper/node
 
 WORKDIR /home
 
