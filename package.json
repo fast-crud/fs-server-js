@@ -1,7 +1,7 @@
 {
-  "name": "@fast-crud/fast-server-js",
+  "name": "@fast-crud/fs-server-js",
   "version": "1.0.0",
-  "description": "fast-server by midway",
+  "description": "fast-server base midway",
   "private": true,
   "dependencies": {
     "@koa/cors": "^3.1.0",
