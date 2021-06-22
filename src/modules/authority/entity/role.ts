@@ -13,9 +13,9 @@ export class RoleEntity {
   @Column({ comment: '角色名称', length: 100 })
   name: string;
 
-  @Column({ comment: '创建时间', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({name:"create_time", comment: '创建时间', default: () => 'CURRENT_TIMESTAMP' })
   createTime: Date;
-  @Column({ comment: '修改时间', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({name:"update_time", comment: '修改时间', default: () => 'CURRENT_TIMESTAMP' })
   updateTime: Date;
 
   // @ManyToMany(type => PermissionEntity, res => res.roles)

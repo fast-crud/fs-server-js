@@ -29,9 +29,11 @@ export class ContainerLifeCycle {
 
   async onReady() {
     //跨域
-    this.app.use(cors({
-      origin: '*',
-    }));
+    this.app.use(
+      cors({
+        origin: '*',
+      })
+    );
     // bodyparser options see https://github.com/koajs/bodyparser
     this.app.use(bodyParser());
     //请求日志打印

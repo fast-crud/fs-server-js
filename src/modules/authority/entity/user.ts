@@ -13,29 +13,37 @@ export class UserEntity {
   @Column({ comment: '用户名', length: 100 })
   username: string;
 
-  @Column({ comment: '密码' })
+  @Column({ comment: '密码', length: 100 })
   password: string;
 
-  @Column({ comment: '昵称', nullable: true })
+  @Column({ name: 'nick_name', comment: '昵称', length: 100, nullable: true })
   nickName: string;
 
-  @Column({ comment: '头像', nullable: true })
+  @Column({ comment: '头像', length: 255, nullable: true })
   avatar: string;
 
-  @Column({ comment: '区号', nullable: true })
+  @Column({ name: 'phone_code', comment: '区号', length: 20, nullable: true })
   phoneCode: string;
-  @Index()
-  @Column({ comment: '手机', nullable: true, length: 20 })
+
+  @Column({ comment: '手机', length: 20, nullable: true })
   mobile: string;
 
-  @Column({ comment: '邮箱', nullable: true })
+  @Column({ comment: '邮箱', length: 50, nullable: true })
   email: string;
 
   @Column({ comment: '状态 0:禁用 1：启用', default: 1, type: 'int' })
   status: number;
-  @Column({ comment: '创建时间', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    name: 'create_time',
+    comment: '创建时间',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   createTime: Date;
-  @Column({ comment: '修改时间', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    name: 'create_time',
+    comment: '修改时间',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   updateTime: Date;
 
   // @ManyToMany(type => RoleEntity, res => res.users)

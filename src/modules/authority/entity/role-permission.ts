@@ -7,8 +7,8 @@ import { Entity, PrimaryColumn } from 'typeorm';
 @EntityModel('sys_role_permission')
 @Entity('sys_role_permission')
 export class RolePermissionEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ name: 'role_id' })
   roleId: number;
-  @PrimaryColumn()
+  @PrimaryColumn({ name: 'permission_id' })
   permissionId: number;
 }

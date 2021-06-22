@@ -7,8 +7,8 @@ import { Entity, PrimaryColumn } from 'typeorm';
 @EntityModel('sys_user_role')
 @Entity('sys_user_role')
 export class UserRoleEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ name: 'role_id' })
   roleId: number;
-  @PrimaryColumn()
+  @PrimaryColumn({ name: 'user_id' })
   userId: number;
 }
