@@ -31,6 +31,9 @@ export class UserEntity {
   @Column({ comment: '邮箱', length: 50, nullable: true })
   email: string;
 
+  @Column({ comment: '备注', length: 100, nullable: true })
+  remark: string;
+
   @Column({ comment: '状态 0:禁用 1：启用', default: 1, type: 'int' })
   status: number;
   @Column({
