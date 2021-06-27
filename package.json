@@ -4,6 +4,7 @@
   "description": "fast-server base midway",
   "private": true,
   "dependencies": {
+    "midway-flyway-js": "^1.1.7",
     "@koa/cors": "^3.1.0",
     "@midwayjs/bootstrap": "^2.3.0",
     "@midwayjs/cache": "^2.10.18",

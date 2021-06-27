@@ -9,6 +9,10 @@ export const orm = {
   logging: true,
 };
 
+export const flyway ={
+  // scriptDir:join(__dirname, '../../db/migration'),
+}
+
 export const biz = {
   jwt: {
     secret: 'greper-is-666',
