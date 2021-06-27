@@ -5,20 +5,17 @@ import * as orm from '@midwayjs/orm';
 import * as cache from '@midwayjs/cache';
 import * as cors from '@koa/cors';
 import { join } from 'path';
-import * as flyway from './components/flyway/src/index';
+import * as flyway from 'midway-flyway-js';
 @Configuration({
   imports: [
     orm, // 加载 orm 组件
     flyway, //加载flyway组件
+    cache,
   ],
 })
 export class ContainerConfiguration {}
 @Configuration({
   conflictCheck: true,
-  imports: [
-    orm, // 加载 orm 组件
-    cache,
-  ],
   importConfigs: [
     join(__dirname, './config'), // 加载配置文件（eggjs 下不需要）
   ],
