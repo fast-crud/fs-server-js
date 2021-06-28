@@ -1,5 +1,5 @@
-import {EntityModel} from '@midwayjs/orm';
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import { EntityModel } from '@midwayjs/orm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
  * 任务执行记录
@@ -10,13 +10,16 @@ export class TaskEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name:"task_id",comment: '任务id'})
+  @Column({ name: 'user_id', comment: '用户id' })
+  userId: number;
+
+  @Column({ name: 'task_id', comment: '任务id' })
   taskId: string;
 
-  @Column({name:"cert_id", comment: '证书' })
+  @Column({ name: 'cert_id', comment: '证书' })
   certId: number;
 
-  @Column({name:"cert_apply_history_id" ,comment: '证书申请记录id' })
+  @Column({ name: 'cert_apply_history_id', comment: '证书申请记录id' })
   certApplyHistoryId: number;
 
   @Column({ comment: '执行成功', nullable: true })
@@ -24,7 +27,6 @@ export class TaskEntity {
 
   @Column({ comment: '任务结果', length: 2048, nullable: true })
   result: string;
-
 
   @Column({
     name: 'create_time',

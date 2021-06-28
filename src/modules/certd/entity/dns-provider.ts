@@ -1,6 +1,5 @@
-import {EntityModel} from '@midwayjs/orm';
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
-
+import { EntityModel } from '@midwayjs/orm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
  * dns提供者
@@ -11,6 +10,8 @@ export class DnsProviderEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ name: 'user_id', comment: '用户id' })
+  userId: number;
   //@Index({ unique: true })
   @Column({ comment: '类型', length: 20 })
   type: string;
@@ -20,7 +21,6 @@ export class DnsProviderEntity {
 
   @Column({ name: 'access_id', comment: '授权id' })
   accessId: number;
-
 
   @Column({
     name: 'create_time',
@@ -34,18 +34,4 @@ export class DnsProviderEntity {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updateTime: Date;
-
-  // @ManyToMany(type => RoleEntity, res => res.users)
-  // @JoinTable({
-  //   name: 'sys_user_roles',
-  //   joinColumn: {
-  //     name: 'userId',
-  //     referencedColumnName: 'id',
-  //   },
-  //   inverseJoinColumn: {
-  //     name: 'roleId',
-  //     referencedColumnName: 'id',
-  //   },
-  // })
-  // roles: RoleEntity[];
 }

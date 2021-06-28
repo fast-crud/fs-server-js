@@ -1,5 +1,5 @@
-import {EntityModel} from '@midwayjs/orm';
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import { EntityModel } from '@midwayjs/orm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
  * 证书
@@ -24,49 +24,75 @@ export class CertEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ name: 'user_id', comment: '用户id' })
+  userId: number;
   /**
    * 域名
    */
-  //@Index({ unique: true })
-  @Column({ comment: '域名', length: 1024 })
+  @Column({ comment: '域名', length: 2048 })
   domains: string;
 
   @Column({ comment: '邮箱', length: 100 })
   email: string;
 
-  @Column({ name: 'cert_provider_id', comment: '证书提供者ID', length: 100, nullable: true })
+  @Column({
+    name: 'cert_provider_id',
+    comment: '证书提供者ID',
+    length: 100,
+    nullable: true,
+  })
   certProviderId: number;
 
-  @Column({ name: 'challenge_type', comment: '校验挑战类型', length: 100, nullable: true })
+  @Column({
+    name: 'challenge_type',
+    comment: '校验挑战类型',
+    length: 100,
+    nullable: true,
+  })
   challengeType: string;
 
-  @Column({ name: 'challenge_access_id', comment: '校验挑战授权', nullable: true })
+  @Column({
+    name: 'challenge_access_id',
+    comment: '校验挑战授权',
+    nullable: true,
+  })
   challengeAccessId: number;
 
-  @Column({  comment: '国家', length: 100, nullable: true })
+  @Column({ comment: '国家', length: 100, nullable: true })
   country: string;
 
-  @Column({  comment: '省份', length: 100, nullable: true })
+  @Column({ comment: '省份', length: 100, nullable: true })
   state: string;
 
   @Column({ comment: '市区', length: 100, nullable: true })
   locality: string;
 
-  @Column({  comment: '组织/公司', length: 100, nullable: true })
+  @Column({ comment: '组织/公司', length: 100, nullable: true })
   organization: string;
 
-  @Column({ name: 'organization_unit', comment: '部门', length: 100, nullable: true })
+  @Column({
+    name: 'organization_unit',
+    comment: '部门',
+    length: 100,
+    nullable: true,
+  })
   organizationUnit: string;
-
-
 
   @Column({ comment: '备注', length: 100, nullable: true })
   remark: string;
 
-  @Column({ name:"last_history_id",  comment: '最后一次执行id',  nullable: true })
+  @Column({
+    name: 'last_history_id',
+    comment: '最后一次执行id',
+    nullable: true,
+  })
   lastHistoryId: number;
 
-  @Column({ name: 'last_success_id', comment: '最后一次成功id', nullable: true })
+  @Column({
+    name: 'last_success_id',
+    comment: '最后一次成功id',
+    nullable: true,
+  })
   lastSuccessId: number;
 
   @Column({

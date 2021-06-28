@@ -1,6 +1,5 @@
-import {EntityModel} from '@midwayjs/orm';
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
-
+import { EntityModel } from '@midwayjs/orm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
  * 证书提供者
@@ -11,18 +10,25 @@ export class CertProviderEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  //@Index({ unique: true })
+  @Column({ name: 'user_id', comment: '用户id' })
+  userId: number;
+
   @Column({ comment: '类型', length: 20 })
   type: string;
 
   @Column({ comment: '账号', length: 100 })
   account: string;
 
-  @Column({ name: 'private_key', comment: '私钥', length: 1024, nullable: true })
+  @Column({
+    name: 'private_key',
+    comment: '私钥',
+    length: 1024,
+    nullable: true,
+  })
   privateKey: string;
 
   @Column({ name: 'setting', comment: '设置', nullable: true })
-  setting:string
+  setting: string;
 
   @Column({
     name: 'create_time',
@@ -36,18 +42,4 @@ export class CertProviderEntity {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updateTime: Date;
-
-  // @ManyToMany(type => RoleEntity, res => res.users)
-  // @JoinTable({
-  //   name: 'sys_user_roles',
-  //   joinColumn: {
-  //     name: 'userId',
-  //     referencedColumnName: 'id',
-  //   },
-  //   inverseJoinColumn: {
-  //     name: 'roleId',
-  //     referencedColumnName: 'id',
-  //   },
-  // })
-  // roles: RoleEntity[];
 }

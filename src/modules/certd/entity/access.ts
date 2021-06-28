@@ -1,5 +1,5 @@
-import {EntityModel} from '@midwayjs/orm';
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import { EntityModel } from '@midwayjs/orm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
  * 授权配置
@@ -9,6 +9,8 @@ import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 export class AccessEntity {
   @PrimaryGeneratedColumn()
   id: number;
+  @Column({ name: 'user_id', comment: '用户id' })
+  userId: number;
   @Column({ comment: '名称', length: 100 })
   name: string;
 
@@ -30,5 +32,4 @@ export class AccessEntity {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updateTime: Date;
-
 }
