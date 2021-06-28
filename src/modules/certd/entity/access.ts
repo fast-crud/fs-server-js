@@ -2,7 +2,7 @@ import {EntityModel} from '@midwayjs/orm';
 import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 /**
- * 权限配置
+ * 授权配置
  */
 @EntityModel('access')
 @Entity('access')

@@ -37,11 +37,11 @@ export class CertEntity {
   @Column({ name: 'cert_provider_id', comment: '证书提供者ID', length: 100, nullable: true })
   certProviderId: number;
 
-  @Column({ name: 'validate_type', comment: '校验类型', length: 100, nullable: true })
-  validateType: string;
+  @Column({ name: 'challenge_type', comment: '校验挑战类型', length: 100, nullable: true })
+  challengeType: string;
 
-  @Column({ name: 'validate_access_id', comment: '校验授权', nullable: true })
-  validateAccessId: number;
+  @Column({ name: 'challenge_access_id', comment: '校验挑战授权', nullable: true })
+  challengeAccessId: number;
 
   @Column({  comment: '国家', length: 100, nullable: true })
   country: string;
@@ -59,8 +59,15 @@ export class CertEntity {
   organizationUnit: string;
 
 
+
   @Column({ comment: '备注', length: 100, nullable: true })
   remark: string;
+
+  @Column({ name:"last_history_id",  comment: '最后一次执行id',  nullable: true })
+  lastHistoryId: number;
+
+  @Column({ name: 'last_success_id', comment: '最后一次成功id', nullable: true })
+  lastSuccessId: number;
 
   @Column({
     name: 'create_time',
