@@ -6,7 +6,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
  */
 @EntityModel('task_history')
 @Entity('task_history')
-export class TaskEntity {
+export class TaskHistoryEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

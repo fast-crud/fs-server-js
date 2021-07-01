@@ -2,25 +2,33 @@ import { EntityModel } from '@midwayjs/orm';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
- * dns提供者
+ * 证书签发者
  */
-@EntityModel('dns_provider')
-@Entity('dns_provider')
-export class DnsProviderEntity {
+@EntityModel('cert_issuer')
+@Entity('cert_issuer')
+export class CertIssuerEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ name: 'user_id', comment: '用户id' })
   userId: number;
-  //@Index({ unique: true })
+
   @Column({ comment: '类型', length: 20 })
   type: string;
 
-  @Column({ comment: '名称', length: 100 })
-  name: string;
+  @Column({ comment: '账号', length: 100 })
+  account: string;
 
-  @Column({ name: 'access_id', comment: '授权id' })
-  accessId: number;
+  @Column({
+    name: 'private_key',
+    comment: '私钥',
+    length: 1024,
+    nullable: true,
+  })
+  privateKey: string;
+
+  @Column({ name: 'setting', comment: '设置', nullable: true })
+  setting: string;
 
   @Column({
     name: 'create_time',

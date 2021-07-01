@@ -12,4 +12,4 @@ class CertProviderType {
   }
 }
 
-export const CertProviderTypeEnum = new CertProviderType();
+export const CertIssuerTypeEnum = new CertProviderType();
