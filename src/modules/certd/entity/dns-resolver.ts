@@ -6,7 +6,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
  */
 @EntityModel('dns_resolver')
 @Entity('dns_resolver')
-export class DnsProviderEntity {
+export class DnsResolverEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

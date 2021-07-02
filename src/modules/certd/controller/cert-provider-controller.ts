@@ -8,16 +8,16 @@ import {
   Query,
 } from '@midwayjs/decorator';
 import { CrudController } from '../../../basic/crud-controller';
-import { CertProviderService } from '../service/cert-provider-service';
+import { CertIssuerService } from '../service/cert-issuer-service';
 
 /**
  * 证书提供者
  */
 @Provide()
 @Controller('/api/certd/cert-provider')
-export class CertProviderController extends CrudController<CertProviderService> {
+export class CertProviderController extends CrudController<CertIssuerService> {
   @Inject()
-  service: CertProviderService;
+  service: CertIssuerService;
 
   getService() {
     return this.service;

@@ -8,7 +8,7 @@ import {
   Query,
 } from '@midwayjs/decorator';
 import { CrudController } from '../../../basic/crud-controller';
-import { CertProviderService } from '../service/cert-provider-service';
+import { CertIssuerService } from '../service/cert-issuer-service';
 import { DnsProviderService } from '../service/dns-provider-service';
 
 /**
@@ -18,7 +18,7 @@ import { DnsProviderService } from '../service/dns-provider-service';
 @Controller('/api/certd/dns-provider')
 export class DnsProviderController extends CrudController<DnsProviderService> {
   @Inject()
-  service: CertProviderService;
+  service: CertIssuerService;
 
   getService() {
     return this.service;
