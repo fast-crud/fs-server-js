@@ -11,16 +11,20 @@ export abstract class BaseService {
 
   abstract getRepository();
 
+  async getById(id) {
+    if (!id) {
+      throw new ValidateException('id不能为空');
+    }
+    const info = await this.getRepository().findOne({ id });
+    return info;
+  }
   /**
    * 获得单个ID
    * @param id ID
    * @param infoIgnoreProperty 忽略返回属性
    */
   async info(id, infoIgnoreProperty?) {
-    if (!id) {
-      throw new ValidateException('id不能为空');
-    }
-    const info = await this.getRepository().findOne({ id });
+    const info = await this.getById(id);
     if (info && infoIgnoreProperty) {
       for (const property of infoIgnoreProperty) {
         delete info[property];
