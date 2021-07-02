@@ -18,8 +18,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
       emailAddress: 'xiaojunnuo@qq.com'
     }
  */
-@EntityModel('cert')
-@Entity('cert')
+@EntityModel('cd_cert')
+@Entity('cd_cert')
 export class CertEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -36,12 +36,11 @@ export class CertEntity {
   email: string;
 
   @Column({
-    name: 'cert_provider_id',
+    name: 'cert_issuer_id',
     comment: '证书提供者ID',
-    length: 100,
     nullable: true,
   })
-  certProviderId: number;
+  certIssuerId: number;
 
   @Column({
     name: 'challenge_type',
@@ -57,6 +56,13 @@ export class CertEntity {
     nullable: true,
   })
   challengeAccessId: number;
+
+  @Column({
+    name: 'dns_resolver_id',
+    comment: 'dns解析',
+    nullable: true,
+  })
+  dnsResolverId: number;
 
   @Column({ comment: '国家', length: 100, nullable: true })
   country: string;
@@ -102,7 +108,7 @@ export class CertEntity {
   })
   createTime: Date;
   @Column({
-    name: 'create_time',
+    name: 'update_time',
     comment: '修改时间',
     default: () => 'CURRENT_TIMESTAMP',
   })

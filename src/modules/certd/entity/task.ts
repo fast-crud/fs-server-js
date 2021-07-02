@@ -4,8 +4,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 /**
  * 证书
  */
-@EntityModel('task')
-@Entity('task')
+@EntityModel('cd_task')
+@Entity('cd_task')
 export class TaskEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -52,7 +52,7 @@ export class TaskEntity {
   })
   createTime: Date;
   @Column({
-    name: 'create_time',
+    name: 'update_time',
     comment: '修改时间',
     default: () => 'CURRENT_TIMESTAMP',
   })

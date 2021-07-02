@@ -4,8 +4,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 /**
  * 任务执行记录
  */
-@EntityModel('task_history')
-@Entity('task_history')
+@EntityModel('cd_task_history')
+@Entity('cd_task_history')
 export class TaskHistoryEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -14,7 +14,7 @@ export class TaskHistoryEntity {
   userId: number;
 
   @Column({ name: 'task_id', comment: '任务id' })
-  taskId: string;
+  taskId: number;
 
   @Column({ name: 'cert_id', comment: '证书' })
   certId: number;
@@ -35,7 +35,7 @@ export class TaskHistoryEntity {
   })
   createTime: Date;
   @Column({
-    name: 'create_time',
+    name: 'update_time',
     comment: '修改时间',
     default: () => 'CURRENT_TIMESTAMP',
   })

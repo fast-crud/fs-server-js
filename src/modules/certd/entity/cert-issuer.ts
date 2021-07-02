@@ -4,8 +4,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 /**
  * 证书签发者
  */
-@EntityModel('cert_issuer')
-@Entity('cert_issuer')
+@EntityModel('cd_cert_issuer')
+@Entity('cd_cert_issuer')
 export class CertIssuerEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -37,7 +37,7 @@ export class CertIssuerEntity {
   })
   createTime: Date;
   @Column({
-    name: 'create_time',
+    name: 'update_time',
     comment: '修改时间',
     default: () => 'CURRENT_TIMESTAMP',
   })

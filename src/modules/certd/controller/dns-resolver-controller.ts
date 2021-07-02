@@ -8,17 +8,16 @@ import {
   Query,
 } from '@midwayjs/decorator';
 import { CrudController } from '../../../basic/crud-controller';
-import { CertIssuerService } from '../service/cert-issuer-service';
-import { DnsProviderService } from '../service/dns-provider-service';
+import { DnsResolverService } from '../service/dns-resolver-service';
 
 /**
  * dns提供者
  */
 @Provide()
-@Controller('/api/certd/dns-provider')
-export class DnsProviderController extends CrudController<DnsProviderService> {
+@Controller('/api/certd/dns-resolver')
+export class DnsResolverController extends CrudController<DnsResolverService> {
   @Inject()
-  service: CertIssuerService;
+  service: DnsResolverService;
 
   getService() {
     return this.service;

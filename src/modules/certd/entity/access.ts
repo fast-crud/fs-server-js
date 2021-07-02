@@ -4,8 +4,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 /**
  * 授权配置
  */
-@EntityModel('access')
-@Entity('access')
+@EntityModel('cd_access')
+@Entity('cd_access')
 export class AccessEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -27,7 +27,7 @@ export class AccessEntity {
   })
   createTime: Date;
   @Column({
-    name: 'create_time',
+    name: 'update_time',
     comment: '修改时间',
     default: () => 'CURRENT_TIMESTAMP',
   })

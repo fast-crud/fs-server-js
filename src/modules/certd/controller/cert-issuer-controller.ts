@@ -14,8 +14,8 @@ import { CertIssuerService } from '../service/cert-issuer-service';
  * 证书提供者
  */
 @Provide()
-@Controller('/api/certd/cert-provider')
-export class CertProviderController extends CrudController<CertIssuerService> {
+@Controller('/api/certd/cert-issuer')
+export class CertIssuerController extends CrudController<CertIssuerService> {
   @Inject()
   service: CertIssuerService;
 

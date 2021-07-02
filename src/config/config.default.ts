@@ -9,9 +9,9 @@ export const orm = {
   logging: true,
 };
 
-export const flyway ={
+export const flyway = {
   // scriptDir:join(__dirname, '../../db/migration'),
-}
+};
 
 export const biz = {
   jwt: {

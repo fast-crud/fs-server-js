@@ -4,8 +4,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 /**
  * dns提供者
  */
-@EntityModel('dns_resolver')
-@Entity('dns_resolver')
+@EntityModel('cd_dns_resolver')
+@Entity('cd_dns_resolver')
 export class DnsResolverEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -27,8 +27,9 @@ export class DnsResolverEntity {
     default: () => 'CURRENT_TIMESTAMP',
   })
   createTime: Date;
+
   @Column({
-    name: 'create_time',
+    name: 'update_time',
     comment: '修改时间',
     default: () => 'CURRENT_TIMESTAMP',
   })

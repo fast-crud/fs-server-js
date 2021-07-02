@@ -4,6 +4,7 @@
   "description": "fast-server base midway",
   "private": true,
   "dependencies": {
+    "@alicloud/pop-core": "^1.7.10",
     "@koa/cors": "^3.1.0",
     "@midwayjs/bootstrap": "^2.3.0",
     "@midwayjs/cache": "^2.10.18",

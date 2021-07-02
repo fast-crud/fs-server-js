@@ -1,6 +1,6 @@
-import { AbstractAliyunPlugin } from '../abstract-aliyun.js';
-import Core from '@alicloud/pop-core';
-import dayjs from 'dayjs';
+import { AbstractAliyunPlugin } from '../abstract-aliyun';
+import * as Core from '@alicloud/pop-core';
+import * as dayjs from 'dayjs';
 
 const define = {
   name: 'deployCertToAliyunCDN',
@@ -46,12 +46,12 @@ const define = {
     //   ],
     //   required:true
     // },
-    accessProvider: {
+    accessId: {
       label: 'Access提供者',
-      type: [String, Object],
+      type: [Number],
       desc: 'access授权',
       component: {
-        name: 'access-provider-selector',
+        name: 'access-selector',
         filter: 'aliyun',
       },
       required: true,
@@ -66,8 +66,8 @@ export class DeployCertToAliyunCDN extends AbstractAliyunPlugin {
   }
 
   async execute({ cert, props, context }) {
-    const accessProvider = this.getAccessProvider(props.accessProvider);
-    const client = this.getClient(accessProvider);
+    const access = await this.getAccess(props.accessId);
+    const client = this.getClient(access);
     const params = this.buildParams(props, context, cert);
     await this.doRequest(client, params);
   }

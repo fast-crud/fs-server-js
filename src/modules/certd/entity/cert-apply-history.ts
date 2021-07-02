@@ -4,8 +4,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 /**
  * 证书
  */
-@EntityModel('cert_apply_history')
-@Entity('cert_apply_history')
+@EntityModel('cd_cert_apply_history')
+@Entity('cd_cert_apply_history')
 export class CertApplyHistoryEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -15,7 +15,7 @@ export class CertApplyHistoryEntity {
   /**
    * 证书
    */
-  @Column({ name: 'cert_id', comment: '证书id', length: 1024 })
+  @Column({ name: 'cert_id', comment: '证书id' })
   certId: number;
 
   @Column({ comment: '成功', nullable: true })
@@ -46,7 +46,7 @@ export class CertApplyHistoryEntity {
   })
   createTime: Date;
   @Column({
-    name: 'create_time',
+    name: 'update_time',
     comment: '修改时间',
     default: () => 'CURRENT_TIMESTAMP',
   })
