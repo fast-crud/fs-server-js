@@ -4,6 +4,7 @@ import {
   IMidwayKoaContext,
   IMidwayKoaNext,
 } from '@midwayjs/koa';
+import * as _ from 'lodash';
 import * as jwt from 'jsonwebtoken';
 import { Constants } from '../basic/constants';
 
