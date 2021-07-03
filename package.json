@@ -44,6 +44,7 @@
   "scripts": {
     "start": "NODE_ENV=production node ./bootstrap.js",
     "online": "NODE_ENV=production node ./bootstrap.js",
+    "online:preview": "NODE_ENV=preview node ./bootstrap.js",
     "dev": "cross-env NODE_ENV=local midway-bin dev --ts",
     "dev:preview": "cross-env NODE_ENV=preview midway-bin dev --ts",
     "test": "midway-bin test --ts",

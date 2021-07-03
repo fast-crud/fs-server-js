@@ -11,4 +11,4 @@ RUN npm run build:preview
 # 如果端口更换，这边可以更新一下
 EXPOSE 7001
 
-CMD ["npm", "run", "online"]
+CMD ["npm", "run", "online:preview"]
