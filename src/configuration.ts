@@ -37,20 +37,12 @@ export class ContainerLifeCycle {
     this.app.use(await this.app.generateMiddleware('reportMiddleware'));
 
     //统一异常处理
-    this.app.use(async (ctx, next) => {
-      try {
-        await next();
-      } catch (error) {
-        console.error(error);
-        // 响应用户
-        ctx.status = error.statusCode || error.status || 500;
-        ctx.body = error.message;
-        ctx.app.emit('error', error); // 触发应用层级错误事件
-      }
-    });
-    // this.app.use(
-    //   await this.app.generateMiddleware('globalExceptionMiddleware')
-    // );
+    this.app.use(
+      await this.app.generateMiddleware('globalExceptionMiddleware')
+    );
+    //预览模式限制修改id<1000的数据
+    this.app.use(await this.app.generateMiddleware('previewMiddleware'));
+
     //授权处理
     this.app.use(await this.app.generateMiddleware('authorityMiddleware'));
   }
