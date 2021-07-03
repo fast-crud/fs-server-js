@@ -1,6 +1,6 @@
 {
   "name": "@fast-crud/fs-server-js",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "fast-server base midway",
   "private": true,
   "dependencies": {
