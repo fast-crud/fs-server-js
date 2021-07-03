@@ -20,5 +20,9 @@ export const Constants = {
       code: 402,
       message: '您没有权限',
     },
+    preview: {
+      code: 10001,
+      message: '对不起，预览环境不允许修改此数据',
+    },
   },
 };

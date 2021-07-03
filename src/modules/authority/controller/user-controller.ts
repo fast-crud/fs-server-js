@@ -61,16 +61,16 @@ export class UserController extends CrudController<UserService> {
 
   @Post('/add')
   async add(@Body(ALL) bean) {
-    return super.add(bean);
+    return await super.add(bean);
   }
 
   @Post('/update')
   async update(@Body(ALL) bean) {
-    return super.update(bean);
+    return await super.update(bean);
   }
   @Post('/delete')
   async delete(@Query() id) {
-    return super.delete(id);
+    return await super.delete(id);
   }
 
   /**

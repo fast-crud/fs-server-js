@@ -1,5 +1,11 @@
 import { join } from 'path';
 /**
+ * 演示环境
+ */
+export const preview = {
+  enabled: false,
+};
+/**
  * 单数据库实例
  */
 export const orm = {
@@ -9,9 +15,9 @@ export const orm = {
   logging: true,
 };
 
-export const flyway ={
+export const flyway = {
   // scriptDir:join(__dirname, '../../db/migration'),
-}
+};
 
 export const biz = {
   jwt: {

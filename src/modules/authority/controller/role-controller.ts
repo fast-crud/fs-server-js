@@ -25,7 +25,7 @@ export class RoleController extends CrudController<RoleService> {
 
   @Post('/page')
   async page(@Body(ALL) body) {
-    return super.page(body);
+    return await super.page(body);
   }
 
   @Post('/list')
@@ -36,16 +36,16 @@ export class RoleController extends CrudController<RoleService> {
 
   @Post('/add')
   async add(@Body(ALL) bean) {
-    return super.add(bean);
+    return await super.add(bean);
   }
 
   @Post('/update')
   async update(@Body(ALL) bean) {
-    return super.update(bean);
+    return await super.update(bean);
   }
   @Post('/delete')
   async delete(@Query() id) {
-    return super.delete(id);
+    return await super.delete(id);
   }
 
   @Post('/getPermissionTree')
