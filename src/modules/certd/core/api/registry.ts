@@ -1,22 +1,26 @@
+import { Plugin } from './d';
+
 export class Registry {
   collection;
   constructor() {
     this.collection = {};
   }
 
-  install(target) {
-    if (target == null) {
+  install(plugin: Plugin) {
+    if (plugin == null) {
       return;
     }
     if (this.collection == null) {
       this.collection = {};
     }
-    let defineName = target.define ? target.define().name : null;
-    if (defineName == null) {
-      defineName = target.name;
-    }
+    const define = plugin.define();
+    const defineName = define.name;
 
-    this.register(defineName, target);
+    this.register(defineName, {
+      plugin,
+      define,
+      type: defineName,
+    });
   }
 
   register(key, value) {
