@@ -44,6 +44,6 @@ export class ContainerLifeCycle {
     this.app.use(await this.app.generateMiddleware('previewMiddleware'));
 
     //授权处理
-    // this.app.use(await this.app.generateMiddleware('authorityMiddleware'));
+    this.app.use(await this.app.generateMiddleware('authorityMiddleware'));
   }
 }
