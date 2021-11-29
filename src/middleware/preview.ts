@@ -16,15 +16,11 @@ export class PreviewMiddleware implements IWebMiddleware {
 
   resolve() {
     return async (ctx: IMidwayKoaContext, next: IMidwayKoaNext) => {
-
-      let { url, request } = ctx;
-      console.log('request query',request.query)
-
       if (!this.preview) {
         await next();
         return;
       }
-
+      let { url, request } = ctx;
       const body: any = request.body;
       let id = body.id || request.query.id;
       if(id != null && typeof id === 'string'){
