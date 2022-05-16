@@ -23,7 +23,7 @@ export class PreviewMiddleware implements IWebMiddleware {
       let { url, request } = ctx;
       const body: any = request.body;
       let id = body.id || request.query.id;
-      const roleId = body.roleId || request.query.roleId;
+      const roleId = body.roleId;
       if (id == null && roleId != null) {
         id = roleId;
       }
