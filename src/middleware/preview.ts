@@ -33,7 +33,10 @@ export class PreviewMiddleware implements IWebMiddleware {
       if (url.indexOf('?') !== -1) {
         url = url.substring(0, url.indexOf('?'));
       }
-      const isModify = url.endsWith('update') || url.endsWith('delete');
+      const isModify =
+        url.endsWith('update') ||
+        url.endsWith('delete') ||
+        url.endsWith('authz');
       const isPreviewId = id < 1000;
       if (this.preview && isModify && isPreviewId) {
         throw new PreviewException(
