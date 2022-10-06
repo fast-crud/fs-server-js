@@ -1,6 +1,6 @@
 {
   "name": "@fast-crud/fs-server-js",
-  "version": "1.1.0",
+  "version": "0.2.0",
   "description": "fast-server base midway",
   "private": true,
   "scripts": {
@@ -33,15 +33,18 @@
     "@midwayjs/typeorm": "^3.5.3",
     "typeorm": "^0.3.10",
     "cache-manager": "^3.4.3",
+    "dayjs": "^1.10.5",
     "glob": "^7.1.7",
     "jsonwebtoken": "^8.5.1",
     "koa-bodyparser": "^4.3.0",
     "lodash": "^4.17.21",
     "log4js": "^6.3.0",
     "md5": "^2.3.0",
+    "midway-flyway-js": "^1.1.7",
     "sqlite3": "^5.0.2",
     "svg-captcha": "^1.4.0",
-    "@midwayjs/validate": "^3.0.0"
+    "@midwayjs/validate": "^3.0.0",
+    "@alicloud/pop-core": "^1.7.10"
   },
   "devDependencies": {
     "@midwayjs/cli": "^1.0.0",
