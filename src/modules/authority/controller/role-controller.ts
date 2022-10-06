@@ -24,7 +24,10 @@ export class RoleController extends CrudController<RoleService> {
   }
 
   @Post('/page')
-  async page(@Body(ALL) body) {
+  async page(
+    @Body(ALL)
+    body
+  ) {
     return await super.page(body);
   }
 
@@ -35,27 +38,42 @@ export class RoleController extends CrudController<RoleService> {
   }
 
   @Post('/add')
-  async add(@Body(ALL) bean) {
+  async add(
+    @Body(ALL)
+    bean
+  ) {
     return await super.add(bean);
   }
 
   @Post('/update')
-  async update(@Body(ALL) bean) {
+  async update(
+    @Body(ALL)
+    bean
+  ) {
     return await super.update(bean);
   }
   @Post('/delete')
-  async delete(@Query() id) {
+  async delete(
+    @Query('id')
+    id
+  ) {
     return await super.delete(id);
   }
 
   @Post('/getPermissionTree')
-  async getPermissionTree(@Query() id) {
+  async getPermissionTree(
+    @Query('id')
+    id
+  ) {
     const ret = await this.service.getPermissionTreeByRoleId(id);
     return this.ok(ret);
   }
 
   @Post('/getPermissionIds')
-  async getPermissionIds(@Query() id) {
+  async getPermissionIds(
+    @Query('id')
+    id
+  ) {
     const ret = await this.service.getPermissionIdsByRoleId(id);
     return this.ok(ret);
   }
@@ -65,8 +83,14 @@ export class RoleController extends CrudController<RoleService> {
    * @param id
    */
   @Post('/authz')
-  async authz(@Body() roleId, @Body() permissionIds) {
+  async authz(
+    @Body('roleId')
+    roleId,
+    @Body('permissionIds')
+    permissionIds
+  ) {
     await this.service.authz(roleId, permissionIds);
     return this.ok(null);
   }
 }
+

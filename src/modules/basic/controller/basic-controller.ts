@@ -1,6 +1,6 @@
-import { ALL, Inject, Rule } from '@midwayjs/decorator';
+import { Rule,RuleType } from '@midwayjs/validate';
+import { ALL, Inject } from '@midwayjs/decorator';
 import { Body } from '@midwayjs/decorator';
-import { RuleType } from '@midwayjs/decorator';
 import { Controller, Post, Provide } from '@midwayjs/decorator';
 import { BaseController } from '../../../basic/base-controller';
 import { CodeService } from '../service/code-service';
@@ -35,15 +35,22 @@ export class BasicController extends BaseController {
   @Inject()
   codeService: CodeService;
   @Post('/sendSmsCode')
-  public sendSmsCode(@Body(ALL) body: SmsCodeReq) {
+  public sendSmsCode(
+    @Body(ALL)
+    body: SmsCodeReq
+  ) {
     // 设置缓存内容
     return this.ok(null);
   }
 
   @Post('/captcha')
-  public async getCaptcha(@Body() randomStr) {
+  public async getCaptcha(
+    @Body()
+    randomStr
+  ) {
     console.assert(randomStr < 10, 'randomStr 过长');
     const captcha = await this.codeService.generateCaptcha(randomStr);
     return this.ok(captcha.data);
   }
 }
+

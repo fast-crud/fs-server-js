@@ -1,28 +1,37 @@
+import * as validateComp from '@midwayjs/validate';
+import * as productionConfig from './config/config.production';
+import * as previewConfig from './config/config.preview';
+import * as defaultConfig from './config/config.default';
 import { Configuration, App } from '@midwayjs/decorator';
-import { Application } from '@midwayjs/koa';
+import * as koa from '@midwayjs/koa';
 import * as bodyParser from 'koa-bodyparser';
-import * as orm from '@midwayjs/orm';
+import * as orm from '@midwayjs/typeorm';
 import * as cache from '@midwayjs/cache';
 import * as cors from '@koa/cors';
 import { join } from 'path';
 import * as flyway from 'midway-flyway-js';
+import {ReportMiddleware} from "./middleware/report";
+import {GlobalExceptionMiddleware} from "./middleware/global-exception";
+import {PreviewMiddleware} from "./middleware/preview";
+import {AuthorityMiddleware} from "./middleware/authority";
 @Configuration({
-  imports: [
-    orm, // 加载 orm 组件
-    flyway, //加载flyway组件
-    cache,
+  imports: [koa, orm, cache, flyway,validateComp],
+  importConfigs: [
+    {
+      default: defaultConfig,
+      preview: previewConfig,
+      production: productionConfig,
+    },
   ],
 })
 export class ContainerConfiguration {}
 @Configuration({
   conflictCheck: true,
-  importConfigs: [
-    join(__dirname, './config'), // 加载配置文件（eggjs 下不需要）
-  ],
+  importConfigs: [join(__dirname, './config')],
 })
 export class ContainerLifeCycle {
   @App()
-  app: Application;
+  app: koa.Application;
 
   async onReady() {
     //跨域
@@ -34,16 +43,17 @@ export class ContainerLifeCycle {
     // bodyparser options see https://github.com/koajs/bodyparser
     this.app.use(bodyParser());
     //请求日志打印
-    this.app.use(await this.app.generateMiddleware('reportMiddleware'));
 
-    //统一异常处理
-    this.app.use(
-      await this.app.generateMiddleware('globalExceptionMiddleware')
-    );
-    //预览模式限制修改id<1000的数据
-    this.app.use(await this.app.generateMiddleware('previewMiddleware'));
+    this.app.useMiddleware([
 
-    //授权处理
-    this.app.use(await this.app.generateMiddleware('authorityMiddleware'));
+      ReportMiddleware,
+      //统一异常处理
+      GlobalExceptionMiddleware,
+      //预览模式限制修改id<1000的数据
+      PreviewMiddleware,
+      //授权处理
+      AuthorityMiddleware
+    ])
   }
 }
+

@@ -8,7 +8,10 @@ export abstract class CrudController<
   abstract getService();
 
   @Post('/page')
-  async page(@Body(ALL) body) {
+  async page(
+    @Body(ALL)
+    body
+  ) {
     const pageRet = await this.getService().page(
       body?.query,
       body?.page,
@@ -19,19 +22,29 @@ export abstract class CrudController<
   }
 
   @Post('/add')
-  async add(@Body(ALL) bean) {
+  async add(
+    @Body(ALL)
+    bean
+  ) {
     const id = await this.getService().add(bean);
     return this.ok(id);
   }
 
   @Post('/update')
-  async update(@Body(ALL) bean) {
+  async update(
+    @Body(ALL)
+    bean
+  ) {
     await this.getService().update(bean);
     return this.ok(null);
   }
   @Post('/delete')
-  async delete(@Query() id) {
+  async delete(
+    @Query('id')
+    id
+  ) {
     await this.getService().delete([id]);
     return this.ok(null);
   }
 }
+

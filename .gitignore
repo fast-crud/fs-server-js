@@ -14,3 +14,4 @@ run/
 .tsbuildinfo
 .tsbuildinfo.*
 /data/db.sqlite
+/pnpm-lock.yaml

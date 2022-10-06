@@ -1,10 +1,8 @@
-import { EntityModel } from '@midwayjs/orm';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
  * 权限
  */
-@EntityModel('sys_permission')
 @Entity('sys_permission')
 export class PermissionEntity {
   @PrimaryGeneratedColumn()

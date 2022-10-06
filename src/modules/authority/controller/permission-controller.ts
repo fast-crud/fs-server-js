@@ -24,21 +24,33 @@ export class PermissionController extends CrudController<PermissionService> {
   }
 
   @Post('/page')
-  async page(@Body(ALL) body) {
+  async page(
+    @Body(ALL)
+    body
+  ) {
     return await super.page(body);
   }
 
   @Post('/add')
-  async add(@Body(ALL) bean) {
+  async add(
+    @Body(ALL)
+    bean
+  ) {
     return await super.add(bean);
   }
 
   @Post('/update')
-  async update(@Body(ALL) bean) {
+  async update(
+    @Body(ALL)
+    bean
+  ) {
     return await super.update(bean);
   }
   @Post('/delete')
-  async delete(@Query() id) {
+  async delete(
+    @Query('id')
+    id
+  ) {
     return await super.delete(id);
   }
 
@@ -48,3 +60,4 @@ export class PermissionController extends CrudController<PermissionService> {
     return this.ok(tree);
   }
 }
+

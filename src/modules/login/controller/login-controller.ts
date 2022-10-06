@@ -17,7 +17,10 @@ export class LoginController extends BaseController {
   @Inject()
   loginService: LoginService;
   @Post('/login')
-  public async login(@Body(ALL) user) {
+  public async login(
+    @Body(ALL)
+    user
+  ) {
     const token = await this.loginService.login(user);
     return this.ok(token);
   }
@@ -25,3 +28,4 @@ export class LoginController extends BaseController {
   @Post('/logout')
   public logout() {}
 }
+

@@ -1,10 +1,8 @@
-import { EntityModel } from '@midwayjs/orm';
 import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
  * 角色
  */
-@EntityModel('sys_role')
 @Entity('sys_role')
 export class RoleEntity {
   @PrimaryGeneratedColumn()

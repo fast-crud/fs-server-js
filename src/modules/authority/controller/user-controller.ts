@@ -31,13 +31,16 @@ export class UserController extends CrudController<UserService> {
   }
 
   @Post('/page')
-  async page(@Body(ALL) body) {
+  async page(
+    @Body(ALL)
+    body
+  ) {
     const ret = await super.page(body);
 
     const users = ret.data.records;
 
     //获取roles
-    const userIds = users.map(item => item.id);
+    const userIds = users.map((item) => item.id);
     const userRoles = await this.roleService.getByUserIds(userIds);
     const userRolesMap = new Map();
     for (const ur of userRoles) {
@@ -60,16 +63,25 @@ export class UserController extends CrudController<UserService> {
   }
 
   @Post('/add')
-  async add(@Body(ALL) bean) {
+  async add(
+    @Body(ALL)
+    bean
+  ) {
     return await super.add(bean);
   }
 
   @Post('/update')
-  async update(@Body(ALL) bean) {
+  async update(
+    @Body(ALL)
+    bean
+  ) {
     return await super.update(bean);
   }
   @Post('/delete')
-  async delete(@Query() id) {
+  async delete(
+    @Query('id')
+    id
+  ) {
     return await super.delete(id);
   }
 
@@ -104,3 +116,4 @@ export class UserController extends CrudController<UserService> {
     return this.ok(tree);
   }
 }
+
