@@ -23,13 +23,20 @@ export class PreviewMiddleware implements IWebMiddleware {
       let { url, request } = ctx;
       const body: any = request.body;
       let id = body.id || request.query.id;
-      if(id != null && typeof id === 'string'){
-        id = parseInt(id)
+      const roleId = body.roleId;
+      if (id == null && roleId != null) {
+        id = roleId;
       }
-      if(url.indexOf("?")!==-1){
-        url = url.substring(0,url.indexOf("?"))
+      if (id != null && typeof id === 'string') {
+        id = parseInt(id);
       }
-      const isModify = url.endsWith('update') || url.endsWith('delete');
+      if (url.indexOf('?') !== -1) {
+        url = url.substring(0, url.indexOf('?'));
+      }
+      const isModify =
+        url.endsWith('update') ||
+        url.endsWith('delete') ||
+        url.endsWith('authz');
       const isPreviewId = id < 1000;
       if (this.preview && isModify && isPreviewId) {
         throw new PreviewException(
