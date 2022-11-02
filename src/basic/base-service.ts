@@ -20,7 +20,9 @@ export abstract class BaseService {
     if (!id) {
       throw new ValidateException('id不能为空');
     }
-    const info = await this.getRepository().findOne({ id });
+    const info = await this.getRepository().findOne({
+      where:{ id }
+    });
     if (info && infoIgnoreProperty) {
       for (const property of infoIgnoreProperty) {
         delete info[property];

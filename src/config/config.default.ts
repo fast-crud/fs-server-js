@@ -32,7 +32,7 @@ export default {
         logging: true,
 
         // 配置实体模型 或者 entities: '/entity',
-        entities: ['./modules/authority/entity/*',FlywayHistory],
+        entities: ['/modules/authority/entity/*',FlywayHistory],
       }
     }
   },
