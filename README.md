@@ -12,6 +12,10 @@ see [midway docs][midway] for more detail.
 
 ```bash
 $ npm i
+# 如果遇到sqlite安装失败时
+# 建议使用cnpm
+# npm install -g cnpm
+# cnpm install
 $ npm run dev
 $ open http://localhost:7001/
 ```
