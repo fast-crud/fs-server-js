@@ -8,7 +8,6 @@ base on midway
 
 <!-- add docs here for user -->
 
-see [midway docs][midway] for more detail.
 
 ### Development
 
@@ -35,3 +34,6 @@ $ npm start
 
 
 [midway]: https://midwayjs.org
+
+see [midway docs][ https://midwayjs.org] for more detail.
+
