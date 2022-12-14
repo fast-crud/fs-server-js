@@ -4,6 +4,8 @@ base on midway
 
 ## QuickStart
 
+> nodejs需要16以上     
+
 <!-- add docs here for user -->
 
 see [midway docs][midway] for more detail.
