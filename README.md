@@ -38,5 +38,4 @@ $ npm start
 see [midway docs][ https://midwayjs.org] for more detail.
 
 
-test
 
